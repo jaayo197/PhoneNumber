@@ -48,6 +48,9 @@ namespace PhoneNumber
             Snackbar.Make(view, "Replace with your own action", Snackbar.LengthLong)
                 .SetAction("Action", (Android.Views.View.IOnClickListener)null).Show();
         }
+
+
+
 	}
 }
 
