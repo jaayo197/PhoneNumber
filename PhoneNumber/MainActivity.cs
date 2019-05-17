@@ -18,35 +18,22 @@ namespace PhoneNumber
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
 
-            Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
-            SetSupportActionBar(toolbar);
+            EditText phoneNumberText = FindViewById<EditText>(Resource.Id.PhoneNumberText);
+            TextView translateView = FindViewById<TextView>(Resource.Id.TranslatedView);
+            Button translateButton = FindViewById<Button>(Resource.Id.TranslateButton);
 
-            FloatingActionButton fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
-            fab.Click += FabOnClick;
-        }
-
-        public override bool OnCreateOptionsMenu(IMenu menu)
-        {
-            MenuInflater.Inflate(Resource.Menu.menu_main, menu);
-            return true;
-        }
-
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            int id = item.ItemId;
-            if (id == Resource.Id.action_settings)
+            translateButton.Click += (sender, e) =>
             {
-                return true;
-            }
-
-            return base.OnOptionsItemSelected(item);
-        }
-
-        private void FabOnClick(object sender, EventArgs eventArgs)
-        {
-            View view = (View) sender;
-            Snackbar.Make(view, "Replace with your own action", Snackbar.LengthLong)
-                .SetAction("Action", (Android.Views.View.IOnClickListener)null).Show();
+                string translatedNumber = PhoneNumber.PhoneTranslator.ToNumber(phoneNumberText.Text);
+                if (string.IsNullOrWhiteSpace(translatedNumber))
+                {
+                    translateView.Text = string.Empty;
+                }
+                else
+                {
+                    translateView.Text = translatedNumber;
+                }
+            };
         }
 	}
 }
