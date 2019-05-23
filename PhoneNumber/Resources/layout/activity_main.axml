@@ -26,10 +26,17 @@
 		android:layout_below="@+id/PhoneNumberText"
 		android:id="@+id/TranslateButton" />
 	<TextView
-		android:text=""
-		android:layout_width="wrap_content"
+		android:text="_"
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@id/TranslateButton"
 		android:id="@+id/TranslatedView" />
+	<Button
+		android:text="@string/translationHistory"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/TranslatedView"
+		android:id="@+id/HistoryButton" 
+		android:enabled="false"/>
 	
 </RelativeLayout>
